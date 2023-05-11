@@ -1,3 +1,4 @@
+import { signInWithGoogle } from '@/components/firebase';
 import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -5,9 +6,11 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Auth() {
   return (
     <main
-      className={`flex min-h-screen flex-col items-center justify-between ${inter.className}`}
+      className={`min-h-screen ${inter.className}`}
     >
-      Login
+      <button onClick={signInWithGoogle} className="p-10 bg-red-300">
+        Sign In With Google
+      </button>
     </main>
-  )
+  );
 }

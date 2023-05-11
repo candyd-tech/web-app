@@ -12,6 +12,7 @@
   padding: 0 2rem;
   align-items: center;
   justify-content: space-between;
+  z-index: 999;
 
   @include media-medium {
     width: 5rem;

@@ -1,8 +1,11 @@
-import { Inter } from 'next/font/google'
+import { Poppins } from 'next/font/google'
 import { FaCarAlt, FaMapMarkerAlt, FaMouse } from "react-icons/fa";
 import profile_styles from "@/styles/profile.module.scss"
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Poppins({
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
+  subsets: [ 'latin' ]
+})
 
 const FeedIcons = ({icon}: {icon: JSX.Element}) => {
   return (
