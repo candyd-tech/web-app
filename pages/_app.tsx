@@ -25,7 +25,6 @@ const Main  = ({Component, pageProps}: AppProps) => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         dispatch(setUid(user.uid));
-        router.push("/profile")
       } else {
         router.push("/login")
       }

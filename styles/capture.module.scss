@@ -1,0 +1,17 @@
+.container {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.input_camera {
+  input[type="file"] {
+    display: none;
+  }
+
+  padding: 1.5rem;
+  border-radius: 50%;
+  border: 1px solid #5c95e3;
+}
