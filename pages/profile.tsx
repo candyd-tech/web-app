@@ -10,8 +10,7 @@ import { selectUid } from '@/components/redux/reducers/user'
 import { useSelector } from 'react-redux'
 
 const Profile = () => {
-  const uid = useSelector(selectUid)
-  // const 
+  const uid = useSelector(selectUid);
 
   return (
     <>{

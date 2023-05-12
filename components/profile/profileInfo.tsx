@@ -1,6 +1,10 @@
-import { Poppins } from 'next/font/google'
-import profile_styles from "@/styles/profile.module.scss"
 import Image from 'next/image'
+import { Poppins } from 'next/font/google'
+import { useSelector } from 'react-redux'
+
+import { selectUser } from '../redux/reducers/user'
+
+import profile_styles from "@/styles/profile.module.scss"
 
 const inter = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
@@ -17,12 +21,14 @@ const ProfileNumbers = ({title, amount}: {title: string, amount: number}) => {
 }
 
 const ProfileInfo = () => {
+  const user = useSelector(selectUser);
+
   return (
     <section
       className={`${profile_styles.info} ${inter.className}`}
     >
       <div className={`${profile_styles.image_and_numbers}`}>
-        <ProfileNumbers title={"Posts"} amount={20} />
+        <ProfileNumbers title={"Posts"} amount={user.posts.length} />
 
         <div className={`${profile_styles.image}`}>
           <div className={`relative`}>
@@ -37,14 +43,14 @@ const ProfileInfo = () => {
           </div>
         </div>
 
-        <ProfileNumbers title={"Dedications"} amount={7} />
+        <ProfileNumbers title={"Dedications"} amount={0} />
       </div>
 
       <div className={`${profile_styles.username_and_bio}`}>
-        <h3 className={`font-extrabold`}>{"@AryaJ"}</h3>
+        <h3 className={`font-extrabold`}>{user.username}</h3>
         <div className={`text-xs text-[#6C7A9C]`}>
-          <p>{"Arya Jhaveri"}</p>
-          <p>{"JNIS 19 | Ashoka University 22 | Candyd.co"}</p>
+          <p>{user.fullname}</p>
+          <p>{user.bio}</p>
         </div>
       </div>
     </section>
