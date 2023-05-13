@@ -21,6 +21,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
 }
 
 const Main  = ({Component, pageProps}: AppProps) => {
+  console.log(process.env.NEXT_PUBLIC_DB_URL)
   const router = useRouter();
   const dispatch = useDispatch();
   const userObj = useSelector(selectUser);
