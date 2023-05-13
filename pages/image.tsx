@@ -1,4 +1,5 @@
 import Nav from '@/components/nav';
+import Tag from '@/components/tag';
 import TopBar from '@/components/topBar';
 import styles from '@/styles/imageView.module.scss'
 import { Poppins } from 'next/font/google'
@@ -8,14 +9,6 @@ const inter = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
   subsets: [ 'latin' ]
 })
-
-const Tag = ({tag}: {tag: string}) => {
-  return (
-    <div className={`${styles.tag} text-xs`}>
-      <p>{`#${tag}`}</p>
-    </div>
-  )
-}
 
 const ImageView = () => {
   const caption = "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
