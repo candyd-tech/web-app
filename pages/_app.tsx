@@ -28,7 +28,7 @@ const Main  = ({Component, pageProps}: AppProps) => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        axios.get(`http://localhost:5000/v1/user/${user.uid}`)
+        axios.get(`${process.env.NEXT_PUBLIC_DB_URL}/v1/user/${user.uid}`)
           .then(resp => {
             const resp_data = resp.data;
             console.log("resp_data", resp_data)
