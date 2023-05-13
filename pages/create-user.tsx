@@ -71,7 +71,7 @@ const CreateUser = () => {
   })
 
   useEffect(() => {
-    if (uid) {
+    if (uid !== '') {
       router.push("/profile")
     }
   }, [])
