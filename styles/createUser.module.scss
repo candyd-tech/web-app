@@ -1,0 +1,43 @@
+.container {
+  min-height: 100vh;
+  background: #5c95e3;
+  background: white;
+  padding: 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.form_main {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  input[type="text"],
+  input[type="email"] {
+    border-bottom: 1px solid #5c95e3;
+  }
+}
+
+.form_buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+
+  button {
+    padding: 0.5rem 1rem;
+    background: #5c95e3;
+    border-radius: 50px;
+  }
+}

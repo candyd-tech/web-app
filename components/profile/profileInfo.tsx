@@ -33,11 +33,12 @@ const ProfileInfo = () => {
         <div className={`${profile_styles.image}`}>
           <div className={`relative`}>
             <Image
-              src={"/profile.png"}
+              src={user.photo_url}
               alt={"Profile Photo"}
               fill={true}
               style={{
                 objectFit: "fill",
+                borderRadius: "50%"
               }}
             />
           </div>

@@ -31,6 +31,7 @@ const Main  = ({Component, pageProps}: AppProps) => {
         axios.get(`http://localhost:5000/v1/user/${user.uid}`)
           .then(resp => {
             const resp_data = resp.data;
+            console.log("resp_data", resp_data)
             if (resp_data) {
               dispatch(setUser({
                 ...userObj,
@@ -42,8 +43,7 @@ const Main  = ({Component, pageProps}: AppProps) => {
                 posts: resp_data.posts !== '' ? resp_data.posts : '',
                 bio: resp_data.bio !== '' ? resp_data.bio : '',
               }))
-              console.log(resp.data)
-              console.log(user)
+              console.log(userObj)
             } else {
               router.push("/create-user")
             }
