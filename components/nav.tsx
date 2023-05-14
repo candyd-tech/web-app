@@ -1,5 +1,7 @@
 import Link from 'next/link';
-import { FaBell, FaHome, FaPlus, FaUserAlt } from 'react-icons/fa';
+import { FaHome, FaPlus, FaUserAlt } from 'react-icons/fa';
+import { TbPolaroid } from 'react-icons/tb';
+import { BsFillCartFill } from 'react-icons/bs';
 
 import nav_styles from '@/styles/nav.module.scss'
 
@@ -14,8 +16,8 @@ const Nav = () => {
         <FaHome color="white" size="1.25rem" />
       </Link>
 
-      <Link className={`flex items-center justify-center`} href="/">
-        <FaHome color="white" size="1.25rem" />
+      <Link className={`flex items-center justify-center`} href="/order">
+        <BsFillCartFill color="white" size="1.25rem" />
       </Link>
 
     <div className={`${nav_styles.add_image}`}>
@@ -24,12 +26,12 @@ const Nav = () => {
       </Link>
     </div>
 
-      <Link className={`flex items-center justify-center`} href="/profile">
-        <FaUserAlt color="white" size="1.25rem" />
+      <Link className={`flex items-center justify-center`} href="/dedicate">
+        <TbPolaroid color="white" size="1.25rem" />
       </Link>
 
-      <Link className={`flex items-center justify-center`} href="/">
-        <FaBell color="white" size="1.25rem" />
+      <Link className={`flex items-center justify-center`} href="/profile">
+        <FaUserAlt color="white" size="1.25rem" />
       </Link>
     </div>
     </nav>

@@ -6,8 +6,8 @@ import TopBar from '@/components/topBar'
 
 import { selectUid } from '@/components/redux/reducers/user'
 import { useSelector } from 'react-redux'
-import { useEffect } from 'react'
 import { useRouter } from 'next/router'
+import ComingSoon from '@/components/soon'
 
 const inter = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
@@ -16,10 +16,6 @@ const inter = Poppins({
 
 const Home = () => {
   const uid = useSelector(selectUid);
-  const router = useRouter()
-  useEffect(() => {
-    router.push("/profile")
-  }, [])
 
   return (
     <>
@@ -30,7 +26,8 @@ const Home = () => {
         >
           <Nav />
           <TopBar  title={"Feed"}/>
-          <HomeFeed />
+          { 1 === 1 ? <ComingSoon title={"Feed Feature: Coming Soon! "} content={"View and dedicate photos uploaded by individuals on various prompts, and even order them for physical redemption. Gain a categorized perspective on college memories, witnessing diverse experiences within shared spaces."} />
+            : <HomeFeed /> }
         </main>
       } 
     </>

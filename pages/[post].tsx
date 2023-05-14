@@ -63,8 +63,8 @@ const ImageView = () => {
         </div>
 
         <div className={`w-full text-white ${styles.buttons}`}>
-          <button>Order</button>
-          <button>Dedicate</button>
+          <button disabled={true}>Order</button>
+          <button disabled={true}>Dedicate</button>
         </div>
       </div>
     </main>
