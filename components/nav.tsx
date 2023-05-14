@@ -9,14 +9,13 @@ const Nav = () => {
       className={`${nav_styles.container}`}
     >
     <div>
-      <Link href="/">
+      <Link className={`flex items-center justify-center`} href="/">
         <FaHome color="white" size="1.25rem" />
       </Link>
 
-      <Link href="/">
+      <Link className={`flex items-center justify-center`} href="/">
         <FaHome color="white" size="1.25rem" />
       </Link>
-    </div>
 
     <div className={`${nav_styles.add_image}`}>
       <Link href="/capture">
@@ -24,12 +23,11 @@ const Nav = () => {
       </Link>
     </div>
 
-    <div>
-      <Link href="/profile">
+      <Link className={`flex items-center justify-center`} href="/profile">
         <FaUserAlt color="white" size="1.25rem" />
       </Link>
 
-      <Link href="/">
+      <Link className={`flex items-center justify-center`} href="/">
         <FaBell color="white" size="1.25rem" />
       </Link>
     </div>

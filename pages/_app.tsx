@@ -33,6 +33,7 @@ const Main  = ({Component, pageProps}: AppProps) => {
           .then(resp => {
             const resp_data = resp.data;
             console.log("resp_data", resp_data)
+
             if (resp_data) {
               dispatch(setUser({
                 ...userObj,

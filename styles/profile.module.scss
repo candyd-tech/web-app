@@ -117,12 +117,28 @@
   border-radius: 50px 50px 0 0;
   border: 1px solid #5C95E3;
 
+  & > div {
+    & > img {
+      height: 100%;
+      object-fit: cover;
+      border: 1px solid #5C95E3;
+    }
+  }
+
   & > div:first-child {
     border-radius: 50px 0 0 0;
+
+    & > img {
+      border-radius: 50px 0 0 0;
+    }
   }
 
   & > div:nth-child(2) {
     border-radius: 0 50px 0 0;
+
+    & > img {
+      border-radius: 0 50px 0 0;
+    }
   }
 
 }

@@ -1,6 +1,10 @@
 import { Poppins } from 'next/font/google'
 import { FaCarAlt, FaMapMarkerAlt, FaMouse } from "react-icons/fa";
 import profile_styles from "@/styles/profile.module.scss"
+import { useSelector } from 'react-redux';
+import { selectUser } from '../redux/reducers/user';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const inter = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
@@ -15,13 +19,30 @@ const FeedIcons = ({icon}: {icon: JSX.Element}) => {
   )
 }
 
-const GalleryPhotos = () => {
+const GalleryPhotos = ({post_id}: {post_id: string}) => {
+  const [post, setPost] = useState<any>(undefined);
+  const [media, setMedia] = useState<any>(undefined);
+  useEffect(() => {
+    axios.get(`${process.env.NEXT_PUBLIC_DB_URL}/v1/post/${post_id}`)
+      .then(res => {
+        setPost(res.data)
+        axios.get(`${process.env.NEXT_PUBLIC_DB_URL}/v1/media/${res.data.medias[0]}`)
+          .then(r => {
+            setMedia(r.data)
+          }).catch(err => console.error(err))
+      }).catch(err => console.error(err))
+  }, [])
+  console.log(post, media)
   return (
-    <div className={`${profile_styles.gallery_images}`}></div>
+    <div className={`${profile_styles.gallery_images}`}>
+      <img src={media.compressed_url} alt={post.caption} />
+    </div>
   )
 }
 
 const ProfileFeed = () => {
+  const user = useSelector(selectUser);
+
   return (
     <section
       className={`
@@ -44,16 +65,13 @@ const ProfileFeed = () => {
         <h3 className={`font-extrabold`}>Gallery</h3>
 
         <div className={`${profile_styles.gallery}`}>
-          <GalleryPhotos />
-          <GalleryPhotos />
-          <GalleryPhotos />
-          <GalleryPhotos />
-          <GalleryPhotos />
-          <GalleryPhotos />
-          <GalleryPhotos />
-          <GalleryPhotos />
-          <GalleryPhotos />
-          <GalleryPhotos />
+        {
+          user.posts.map(post => {
+            return (
+              <GalleryPhotos post_id={post}/>
+            )
+          })
+        }
         </div>
       </div>
     </section>
