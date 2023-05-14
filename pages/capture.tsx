@@ -82,7 +82,7 @@ const CreateUser = () => {
   }
 
   useEffect(() => {
-    axios.get(`${process.env.NEXT_PUBLIC_DB_URL}/v1/tags/`)
+    axios.get(`${process.env.NEXT_PUBLIC_DB_URL}/v1/tags`)
       .then(resp => {setTags(resp.data.tags)})
   }, [])
 
