@@ -47,7 +47,7 @@ const submitUser = ({id, name, username, email, bio, photoURL}: {
     dedications_received: [],
     fullname: name,
   }).then(resp => {
-    console.log(resp);
+    // console.log(resp);
     return true
   }).catch(err => {
     console.error(err.response);

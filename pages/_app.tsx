@@ -31,7 +31,7 @@ const Main  = ({Component, pageProps}: AppProps) => {
         axios.get(`${process.env.NEXT_PUBLIC_DB_URL}/v1/user/${user.uid}`)
           .then(resp => {
             const resp_data = resp.data;
-            console.log("resp_data", resp_data)
+            // console.log("resp_data", resp_data)
 
             if (resp_data) {
               dispatch(setUser({
@@ -53,7 +53,7 @@ const Main  = ({Component, pageProps}: AppProps) => {
       }
     })
   }, [])
-  console.log(userObj)
+  // console.log(userObj)
 
   return (
     <Component {...pageProps} />

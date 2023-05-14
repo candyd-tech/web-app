@@ -56,7 +56,7 @@ const CreateUser = () => {
         tags: [prompt !== "" && prompt, hashtag !== '' && hashtag],
         is_public,
         medias: [res.data.id],
-      }).then(_res => {setLoading(false); router.push("/profile")})
+      }).then(_res => {setLoading(false); console.log("*********POSTED***************"); router.push("/profile")})
         .catch(err => console.error(err))
       }).catch(err => console.error(err))
   }

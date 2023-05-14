@@ -18,7 +18,7 @@ const Profile = () => {
   useEffect(() => {
     user.id !== '' && axios.get(`${process.env.NEXT_PUBLIC_DB_URL}/v1/user/${user.id}`)
       .then(resp => {
-        console.log(resp.data)
+        // console.log(resp.data)
         dispatch(setUser({
           ...user,
           fullname: resp.data.fullname,
@@ -28,7 +28,7 @@ const Profile = () => {
           bio: resp.data.bio,
           posts: resp.data.posts
         }))
-      }).catch(err => console.log(err));
+      }).catch(err => console.error(err));
   }, [setUser, dispatch])
 
   return (
