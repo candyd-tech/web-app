@@ -112,6 +112,7 @@
   gap: 0.75rem;
   align-items: center;
   justify-content: center;
+  min-height: 20rem;
 }
 
 .empty_gallery {
@@ -133,7 +134,7 @@
   display: grid;
   justify-content: center;
   width: 100%;
-  min-height: 10rem;
+  min-height: 20rem;
 
   @include media-medium {
     width: 90%;
@@ -148,6 +149,7 @@
 
   border-radius: 50px 50px 0 0;
   border: 1px solid #5C95E3;
+  border-bottom: none;
 
   & > div {
     & > img {
