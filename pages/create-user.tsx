@@ -71,11 +71,10 @@ const CreateUser = () => {
   })
 
   useEffect(() => {
-    console.log(uid)
     if (uid !== '') {
       router.push("/profile")
     }
-  }, [uid])
+  }, [])
 
   useEffect(() => {
     onAuthStateChanged(auth, userAuth => {
@@ -171,6 +170,7 @@ const CreateUser = () => {
               photo_url:  userFormValues.photoURL,
               posts: []
             }))
+            router.push("/profile")
           }
         }}>Done</button>
       </div>
