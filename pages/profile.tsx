@@ -29,7 +29,7 @@ const Profile = () => {
           posts: resp.data.posts
         }))
       }).catch(err => console.log(err));
-  }, [])
+  }, [setUser, dispatch])
 
   return (
     <>{

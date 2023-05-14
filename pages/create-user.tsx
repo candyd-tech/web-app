@@ -36,7 +36,7 @@ const submitUser = ({id, name, username, email, bio, photoURL}: {
     console.log("Some var not filled", [id, name, username, email, bio, photoURL])
     return false
   }
-  axios.post(`${process.env.FLASK_URL}/v1/user/profile`, {
+  axios.post(`${process.env.NEXT_PUBLIC_DB_URL}/v1/user/profile`, {
     id,
     username,
     email,
