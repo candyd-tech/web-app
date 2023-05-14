@@ -43,9 +43,11 @@ const CreateUser = () => {
     caption,
     is_public,
     user_id,
+    tags
     }: {
       caption: string,
-      is_public: boolean
+      is_public: boolean,
+      tags: string[],
       user_id: string}
   ) => {
     setLoading(true)
@@ -53,7 +55,7 @@ const CreateUser = () => {
       axios.post(`${process.env.NEXT_PUBLIC_DB_URL}/v1/post/`, {
         caption,
         user_id,
-        tags: [prompt !== "" && prompt, hashtag !== '' && hashtag],
+        tags,
         is_public,
         medias: [res.data.id],
       }).then(_res => {setLoading(false); console.log("*********POSTED***************"); router.push("/profile")})
@@ -199,7 +201,8 @@ const CreateUser = () => {
             <button onClick={() => postPost({
               is_public: true,
               user_id: uid,
-              caption: caption
+              caption: caption,
+              tags: prompt === "" || hashtag === "" ? [] : [prompt, hashtag]
             })}>Post</button>
           </div>
         </div>
