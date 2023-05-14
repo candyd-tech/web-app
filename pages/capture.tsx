@@ -3,7 +3,7 @@ import { Poppins } from 'next/font/google'
 
 import capture_styles from "@/styles/capture.module.scss"
 import image_styles from '@/styles/imageView.module.scss'
-import Tag from '@/components/tag';
+import Tag, { Dropdown } from '@/components/tag';
 import Nav from '@/components/nav';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { FaCamera } from 'react-icons/fa';
@@ -23,17 +23,18 @@ const CreateUser = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [imgSrc, setImgSrc] = useState<any>(null)
   const [loading, setLoading] = useState<boolean>(false);
+  const [tags, setTags] = useState<any[]>([]);
 
-  const router = useRouter()
+  const [prompt, setPrompt] = useState("");
+  const [hashtag, setHashtag] = useState("");
+
+  const router = useRouter();
 
   const [caption, setCaption] = useState<string>("")
 
   const mediaPost = () => {
     return axios.postForm(
-      `${process.env.NEXT_PUBLIC_DB_URL}/v1/media/`,
-      {
-      image: selectedFile
-      }
+      `${process.env.NEXT_PUBLIC_DB_URL}/v1/media/`, { image: selectedFile }
     )
   }
 
@@ -41,7 +42,7 @@ const CreateUser = () => {
     {
     caption,
     is_public,
-    user_id
+    user_id,
     }: {
       caption: string,
       is_public: boolean
@@ -50,8 +51,12 @@ const CreateUser = () => {
     setLoading(true)
     mediaPost().then(res => {
       axios.post(`${process.env.NEXT_PUBLIC_DB_URL}/v1/post/`, {
-        caption, user_id, tags: [], medias: [res.data.id], is_public,
-      }).then(_res => {console.log(_res); setLoading(false); router.push("/profile")})
+        caption,
+        user_id,
+        tags: [prompt !== "" && prompt, hashtag !== '' && hashtag],
+        is_public,
+        medias: [res.data.id],
+      }).then(_res => {setLoading(false); router.push("/profile")})
         .catch(err => console.error(err))
       }).catch(err => console.error(err))
   }
@@ -75,6 +80,11 @@ const CreateUser = () => {
   }
 
   useEffect(() => {
+    axios.get(`${process.env.NEXT_PUBLIC_DB_URL}/v1/tags`)
+      .then(resp => {setTags(resp.data.tags)})
+  }, [])
+
+  useEffect(() => {
     if (!selectedFile) {
       setImgSrc(null)
       return
@@ -92,19 +102,37 @@ const CreateUser = () => {
       <main className={`min-h-screen ${capture_styles.container} ${inter.className}`}>
         <Nav />
 
+        
         <div className={`w-full ${capture_styles.capture_container}`}>
           <h1 className={`text-xl font-bold`}>Post a Memory</h1>
+          { loading ? <div className={`${capture_styles.post_loading} min-h-[65vh]`}> posting </div> :
           <div className={`${capture_styles.post}`}>
             <div className={`${image_styles.media}`}>
-              <div className={`pb-2 text-sm`}>
-                Share your favorite place and memory on campus!⬇️
-              </div>
+              <Dropdown
+                pick={
+                  prompt === "" ? <p>Pick a prompt...</p> : <p>
+                    {tags.filter( tag => tag.id === prompt)[0].name}
+                  </p>
+                }
+                value={prompt}
+                setValue={setPrompt}
+                options={
+                  tags
+                    .filter((tag: any) => tag.type === "prompt")
+                    .map((tag: any) => {return {id: tag.id, name: tag.name}})
+                }
+              />
+
               <div className={`${capture_styles.post_image}`}>
                 {
                   selectedFile ?
                   <>
                     <img style={{objectFit: "fill"}} src={imgSrc} /> 
-                    <button onClick={() => {setSelectedFile(null); setImgSrc(null)}}>change</button>
+                    <button
+                      onClick={() => {
+                        setSelectedFile(null); setImgSrc(null)
+                      }
+                    }>change</button>
                   </>
                     : 
                   <>
@@ -121,7 +149,10 @@ const CreateUser = () => {
 
                     <p>or</p>
 
-                    <label className={`${capture_styles.input_camera} ${capture_styles.file_picker}`}>
+                    <label className={`
+                      ${capture_styles.input_camera}
+                      ${capture_styles.file_picker}`
+                    }>
                       Choose a file
                       <input type="file"
                         onChange={e => onChangeFile(e)}
@@ -147,11 +178,23 @@ const CreateUser = () => {
                 </p>
               </label>
               <div className={`${capture_styles.tag_container}`}>
-                <Tag tag={"add a location"}/>
+                <Dropdown
+                  value={hashtag}
+                  setValue={setHashtag}
+                  options={
+                    tags
+                      .filter((tag: any) => tag.type === "hashtag")
+                      .map((tag: any) => {return {id: tag.id, name: tag.name}})
+                  }
+                  pick={<Tag tag={
+                    hashtag === "" ? "add a location" :
+                      tags.filter(tag => tag.id === hashtag)[0].name
+                  }/>}
+                />
               </div>
             </div>
           </div>
-
+          }
           <div className={`w-full text-white ${capture_styles.buttons}`}>
             <button onClick={() => postPost({
               is_public: true,
