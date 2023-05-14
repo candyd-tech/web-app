@@ -1,10 +1,12 @@
-import { Poppins } from 'next/font/google'
-import { FaCarAlt, FaMapMarkerAlt, FaMouse } from "react-icons/fa";
-import profile_styles from "@/styles/profile.module.scss"
-import { useSelector } from 'react-redux';
-import { selectUser } from '../redux/reducers/user';
-import { useEffect, useState } from 'react';
 import axios from 'axios';
+import Link from 'next/link';
+import { Poppins } from 'next/font/google'
+import { selectUser } from '../redux/reducers/user';
+import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { FaCarAlt, FaMapMarkerAlt, FaMouse } from "react-icons/fa";
+
+import profile_styles from "@/styles/profile.module.scss"
 
 const inter = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
@@ -27,6 +29,7 @@ const GalleryPhotos = ({post_id}: {post_id: string}) => {
 
   useEffect(() => {
     setLoading(true);
+
     axios.get(`${process.env.NEXT_PUBLIC_DB_URL}/v1/post/${post_id}`)
       .then(res => {
         setPost(res.data)
@@ -42,7 +45,10 @@ const GalleryPhotos = ({post_id}: {post_id: string}) => {
   return (
     <div className={`${profile_styles.gallery_images}`}>
       {!loading && media &&
-      <img src={media.compressed_url} alt={post.caption} />}
+        <Link href={ `/${post_id}` }> 
+          <img src={media.compressed_url} alt={post.caption} />
+        </Link>
+      }
     </div>
   )
 }

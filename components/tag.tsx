@@ -1,5 +1,6 @@
+import { useState, ReactNode } from 'react';
+
 import styles from '@/styles/imageView.module.scss'
-import React, { useState } from 'react';
 
 const Tag = ({tag}: {tag: string}) => {
   return (
@@ -16,7 +17,7 @@ export interface DropdownOptionInterface {
 
 export const Dropdown = (
   {pick, options, setValue}: {
-    pick: React.ReactNode,
+    pick: ReactNode,
     options: DropdownOptionInterface[],
     value: string
     setValue: (param: string) => void

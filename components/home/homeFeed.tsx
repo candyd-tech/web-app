@@ -1,4 +1,5 @@
 import { Poppins } from 'next/font/google'
+
 import styles from "@/styles/feed.module.scss"
 
 const inter = Poppins({

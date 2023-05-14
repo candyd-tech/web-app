@@ -1,6 +1,7 @@
-import nav_styles from '@/styles/nav.module.scss'
 import Link from 'next/link';
 import { FaBell, FaHome, FaPlus, FaUserAlt } from 'react-icons/fa';
+
+import nav_styles from '@/styles/nav.module.scss'
 
 
 const Nav = () => {
