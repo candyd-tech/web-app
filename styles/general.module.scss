@@ -4,9 +4,4 @@
 .page_container {
   margin-bottom: 5rem;
   margin-left: 0rem;
-
-  @include media-medium {
-    margin-bottom: 0rem;
-    margin-left: 5rem;
-  }
 }

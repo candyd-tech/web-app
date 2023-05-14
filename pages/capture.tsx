@@ -102,7 +102,7 @@ const CreateUser = () => {
       <main className={`min-h-screen ${capture_styles.container} ${inter.className}`}>
         <Nav />
 
-        
+
         <div className={`w-full ${capture_styles.capture_container}`}>
           <h1 className={`text-xl font-bold`}>Post a Memory</h1>
           { loading ? <div className={`${capture_styles.post_loading} min-h-[65vh]`}> posting </div> :

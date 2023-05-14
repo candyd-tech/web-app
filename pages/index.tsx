@@ -6,6 +6,8 @@ import TopBar from '@/components/topBar'
 
 import { selectUid } from '@/components/redux/reducers/user'
 import { useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 const inter = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
@@ -14,6 +16,10 @@ const inter = Poppins({
 
 const Home = () => {
   const uid = useSelector(selectUid);
+  const router = useRouter()
+  useEffect(() => {
+    router.push("/profile")
+  }, [])
 
   return (
     <>
