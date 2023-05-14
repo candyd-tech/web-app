@@ -34,7 +34,7 @@ const GalleryPhotos = ({post_id}: {post_id: string}) => {
   }, [])
   console.log(post, media)
   return (
-    <div className={`${profile_styles.gallery_images}`}>
+    <div key={post_id} className={`${profile_styles.gallery_images}`}>
       <img src={media.compressed_url} alt={post.caption} />
     </div>
   )
