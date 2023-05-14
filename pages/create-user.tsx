@@ -71,10 +71,11 @@ const CreateUser = () => {
   })
 
   useEffect(() => {
+    console.log(uid)
     if (uid !== '') {
       router.push("/profile")
     }
-  }, [user])
+  }, [uid])
 
   useEffect(() => {
     onAuthStateChanged(auth, userAuth => {
