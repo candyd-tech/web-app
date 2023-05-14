@@ -35,9 +35,17 @@ const Profile = () => {
     <>{
       user.id !== '' &&
       <main
-        className={`min-h-screen ${profile_styles.profile_container} ${general_styles.page_container}`}
-      >
-        <button onClick={() => {logOut(); dispatch(setUser({...user, id: ""}))}}>sign out</button>
+        className={`
+          min-h-screen
+          ${profile_styles.profile_container}
+          ${general_styles.page_container}`
+      }>
+        <div>
+        <button
+          onClick={() => {logOut(); dispatch(setUser({...user, id: ""}))}}
+        >
+          Sign Out
+        </button></div>
         <Nav />
         <ProfileInfo />
         <ProfileFeed />

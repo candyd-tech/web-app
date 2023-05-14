@@ -71,13 +71,13 @@ const ProfileFeed = () => {
       <div className={`${profile_styles.gallery_section}`}>
         <h3 className={`font-extrabold`}>Gallery</h3>
 
-        <div className={`${profile_styles.gallery}`}>
+        <div className={`${ user.posts.length !== 0 ? profile_styles.gallery : profile_styles.empty_gallery}`}>
         {
-          user.posts.map(post => {
-            return (
-              <GalleryPhotos key={post} post_id={post}/>
-            )
-          })
+          user.posts.length !== 0 ? user.posts.map(post => {
+              return (
+                <GalleryPhotos key={post} post_id={post}/>
+              )
+            }) : <p>add some pictures !</p>
         }
         </div>
       </div>
