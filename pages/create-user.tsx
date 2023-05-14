@@ -70,11 +70,11 @@ const CreateUser = () => {
     username: ""
   })
 
-  useEffect(() => {
-    if (uid !== '') {
-      router.push("/profile")
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (uid !== '') {
+  //     router.push("/profile")
+  //   }
+  // }, [])
 
   useEffect(() => {
     onAuthStateChanged(auth, userAuth => {
