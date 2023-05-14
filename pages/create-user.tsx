@@ -74,7 +74,7 @@ const CreateUser = () => {
     if (uid !== '') {
       router.push("/profile")
     }
-  }, [])
+  }, [user])
 
   useEffect(() => {
     onAuthStateChanged(auth, userAuth => {
