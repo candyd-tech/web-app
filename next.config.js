@@ -9,7 +9,7 @@ const nextConfig = {
         port: '',
       },
       {
-        protocol: 'http',
+        protocol: 'https',
         hostname: 'api.candyd.co',
         port: '',
       },
