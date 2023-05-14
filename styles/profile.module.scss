@@ -4,6 +4,7 @@
 .profile_container {
   width: 100%;
   background: url(/bg_profile.png);
+  background-repeat: repeat-x;
 
   @include media-medium {
     width: 70%;
@@ -117,7 +118,7 @@
 
 .empty_gallery {
   width: 100%;
-  min-height: 10rem;
+  min-height: 20rem;
   padding: 0.5rem 1rem;
   background: white;
 
@@ -132,9 +133,9 @@
 
 .gallery {
   display: grid;
+  min-height: 20rem;
   justify-content: center;
   width: 100%;
-  min-height: 20rem;
 
   @include media-medium {
     width: 90%;
