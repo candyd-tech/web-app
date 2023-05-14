@@ -30,7 +30,7 @@ const GalleryPhotos = ({post_id}: {post_id: string}) => {
     axios.get(`${process.env.NEXT_PUBLIC_DB_URL}/v1/post/${post_id}`)
       .then(res => {
         setPost(res.data)
-        axios.get(`${process.env.NEXT_PUBLIC_DB_URL}/v1/media/${res.data.medias[0]}`)
+        res.data && axios.get(`${process.env.NEXT_PUBLIC_DB_URL}/v1/media/${res.data.medias[0]}`)
           .then(r => {
             setMedia(r.data);
             setLoading(false)
