@@ -3,7 +3,7 @@ import { Poppins } from 'next/font/google'
 
 import capture_styles from "@/styles/capture.module.scss"
 import image_styles from '@/styles/imageView.module.scss'
-// import Tag from '@/components/tag';
+import Tag from '@/components/tag';
 import Nav from '@/components/nav';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { FaCamera } from 'react-icons/fa';
@@ -93,9 +93,12 @@ const CreateUser = () => {
         <Nav />
 
         <div className={`w-full ${capture_styles.capture_container}`}>
-          <h1 className={`text-xl font-bold`}>Post an Image</h1>
+          <h1 className={`text-xl font-bold`}>Post a Memory</h1>
           <div className={`${capture_styles.post}`}>
             <div className={`${image_styles.media}`}>
+              <div className={`pb-2 text-sm`}>
+                Share your favorite place and memory on campus!⬇️
+              </div>
               <div className={`${capture_styles.post_image}`}>
                 {
                   selectedFile ?
@@ -143,13 +146,9 @@ const CreateUser = () => {
                   />
                 </p>
               </label>
-{/*
               <div className={`${capture_styles.tag_container}`}>
-                <Tag tag={"tag1"}/>
-                <Tag tag={"tag1"}/>
-                <Tag tag={"tag1"}/>
+                <Tag tag={"add a location"}/>
               </div>
-*/}
             </div>
           </div>
 

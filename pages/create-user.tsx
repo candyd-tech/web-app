@@ -47,13 +47,14 @@ const submitUser = ({id, name, username, email, bio, photoURL}: {
     dedications_received: [],
     fullname: name,
   }).then(resp => {
-    console.log(resp)
+    console.log(resp);
     return true
   }).catch(err => {
     console.error(err.response);
+    return false
   })
 
-  return false
+  return true;
 }
 
 const CreateUser = () => {
@@ -70,11 +71,18 @@ const CreateUser = () => {
     username: ""
   })
 
-  // useEffect(() => {
-  //   if (uid !== '') {
-  //     router.push("/profile")
-  //   }
-  // }, [])
+  useEffect(() => {
+    if (uid !== '') {
+      axios.get(`${process.env.NEXT_PUBLIC_DB_URL}/v1/user/${uid}`)
+        .then(resp => {
+          console.log("something", resp.data)
+
+          if (resp.data !== null) {
+            router.push("/profile")
+          }
+        })
+    }
+  }, [uid, user])
 
   useEffect(() => {
     onAuthStateChanged(auth, userAuth => {
@@ -161,6 +169,7 @@ const CreateUser = () => {
             bio: userFormValues.bio,
             photoURL: userFormValues.photoURL
           })) {
+            console.log("submit user")
             dispatch(setUser({
               id: uid,
               fullname: userFormValues.name,
@@ -170,7 +179,10 @@ const CreateUser = () => {
               photo_url:  userFormValues.photoURL,
               posts: []
             }))
+            console.log("dispatched")
             router.push("/profile")
+          } else {
+            console.log("something went wrong")
           }
         }}>Done</button>
       </div>
