@@ -21,7 +21,7 @@ const CreateUser = () => {
   const uid = useSelector(selectUid);
 
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [imgSrc, setImgSrc] = useState<string | ArrayBuffer | null>(null)
+  const [imgSrc, setImgSrc] = useState<any>(null)
   const [loading, setLoading] = useState<boolean>(false);
 
   const router = useRouter()
