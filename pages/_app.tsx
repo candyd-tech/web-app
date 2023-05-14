@@ -21,7 +21,6 @@ export default function App({ Component, pageProps, router }: AppProps) {
 }
 
 const Main  = ({Component, pageProps}: AppProps) => {
-  console.log(process.env.NEXT_PUBLIC_DB_URL)
   const router = useRouter();
   const dispatch = useDispatch();
   const userObj = useSelector(selectUser);
@@ -45,7 +44,6 @@ const Main  = ({Component, pageProps}: AppProps) => {
                 posts: resp_data.posts !== '' ? resp_data.posts : '',
                 bio: resp_data.bio !== '' ? resp_data.bio : '',
               }))
-              console.log(userObj)
             } else {
               router.push("/create-user")
             }
@@ -55,6 +53,7 @@ const Main  = ({Component, pageProps}: AppProps) => {
       }
     })
   }, [])
+  console.log(userObj)
 
   return (
     <Component {...pageProps} />

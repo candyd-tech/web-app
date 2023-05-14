@@ -16,7 +16,7 @@ const Profile = () => {
   const user = useSelector(selectUser);
 
   useEffect(() => {
-    axios.get(`${process.env.NEXT_PUBLIC_DB_URL}/v1/user/${user.id}`)
+    user.id !== '' && axios.get(`${process.env.NEXT_PUBLIC_DB_URL}/v1/user/${user.id}`)
       .then(resp => {
         console.log(resp.data)
         dispatch(setUser({
@@ -28,7 +28,7 @@ const Profile = () => {
           bio: resp.data.bio,
           posts: resp.data.posts
         }))
-      });
+      }).catch(err => console.log(err));
   }, [])
 
   return (

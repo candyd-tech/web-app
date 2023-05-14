@@ -22,20 +22,26 @@ const FeedIcons = ({icon}: {icon: JSX.Element}) => {
 const GalleryPhotos = ({post_id}: {post_id: string}) => {
   const [post, setPost] = useState<any>(undefined);
   const [media, setMedia] = useState<any>(undefined);
+
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
+    setLoading(true);
     axios.get(`${process.env.NEXT_PUBLIC_DB_URL}/v1/post/${post_id}`)
       .then(res => {
         setPost(res.data)
         axios.get(`${process.env.NEXT_PUBLIC_DB_URL}/v1/media/${res.data.medias[0]}`)
           .then(r => {
-            setMedia(r.data)
+            setMedia(r.data);
+            setLoading(false)
           }).catch(err => console.error(err))
       }).catch(err => console.error(err))
   }, [])
-  console.log(post, media)
+
   return (
-    <div key={post_id} className={`${profile_styles.gallery_images}`}>
-      <img src={media.compressed_url} alt={post.caption} />
+    <div className={`${profile_styles.gallery_images}`}>
+      {!loading && media &&
+      <img src={media.compressed_url} alt={post.caption} />}
     </div>
   )
 }
@@ -68,7 +74,7 @@ const ProfileFeed = () => {
         {
           user.posts.map(post => {
             return (
-              <GalleryPhotos post_id={post}/>
+              <GalleryPhotos key={post} post_id={post}/>
             )
           })
         }
