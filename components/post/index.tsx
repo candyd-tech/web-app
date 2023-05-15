@@ -19,14 +19,14 @@ const UserInfo = ({userId}: {userId: string}) => {
     <>{postUser &&
       <div className={`${styles.user_info}`}>
         <div className={`${styles.user_image} relative`}>
-          <div> <Image
+          <div> {/* <Image
               src={"/profile.png"}
               alt={"Profile Photo"}
               fill={true}
               style={{
                 objectFit: "fill"
               }}
-            /> </div>
+            /> */}</div>
         </div>
 
         <div className={`text-sm leading-[0.95rem]`}>
