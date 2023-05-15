@@ -13,11 +13,11 @@ const nextConfig = {
         hostname: 'api.candyd.co',
         port: '',
       },
-      {
-        protocol: 'http',
-        hostname: 'res.cloudinary.com',
-        port: '',
-      }
+      // {
+      //   protocol: 'http',
+      //   hostname: 'res.cloudinary.com',
+      //   port: '',
+      // }
     ],
   }
 }
