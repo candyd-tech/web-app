@@ -84,7 +84,7 @@ const CreateUser = () => {
 
   useEffect(() => {
     axios.get(`${process.env.NEXT_PUBLIC_DB_URL}/v1/tags`)
-      .then(resp => {setTags(resp.data.tags)})
+      .then(resp => {setTags(resp.data.tags.filter(( tag: any ) => tag.is_visible))})
   }, [])
 
   useEffect(() => {
@@ -102,7 +102,7 @@ const CreateUser = () => {
   return (
     <>{
       uid !== '' &&
-      <main className={`min-h-screen ${capture_styles.container} ${inter.className}`}>
+      <main className={`min-h-screen pb-4 ${capture_styles.container} ${inter.className}`}>
         <Nav />
 
 
@@ -193,7 +193,7 @@ const CreateUser = () => {
                       .map((tag: any) => {return {id: tag.id, name: tag.name}})
                   }
                   pick={<Tag tag={
-                    hashtag === "" ? "add a location" :
+                    hashtag === "" ? "Add a hashtag" :
                       tags.filter(tag => tag.id === hashtag)[0].name
                   }/>}
                 />
