@@ -32,13 +32,15 @@ export const Dropdown = (
     <div onClick={toggle} className={`z-100 pb-2 text-sm`}>
       {pick}
       {dropdownOpen &&
-      <div className="absolute bg-white border-r border-b border-black border-solid
+      <div className="absolute bg-white border-l border-b border-black
+        border-solid transform translate-x-[-1rem]
         px-2 py-3 flex flex-col items-start gap-3
       ">
         {
           options.map(option => {
             return <div key={option.id}>
-              <button onClick={() => setValue(option.id)}>{option.name}</button>
+              <button className="text-left pb-1" onClick={() => setValue(option.id)}>{option.name}</button>
+              <div className="h-px w-[80%] bg-black absolute"></div>
             </div>
           })
         }

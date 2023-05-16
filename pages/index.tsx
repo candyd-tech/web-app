@@ -6,7 +6,6 @@ import TopBar from '@/components/topBar'
 
 import { selectUid } from '@/components/redux/reducers/user'
 import { useSelector } from 'react-redux'
-import { useRouter } from 'next/router'
 import ComingSoon from '@/components/soon'
 
 const inter = Poppins({

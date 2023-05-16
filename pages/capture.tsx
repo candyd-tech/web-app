@@ -10,6 +10,7 @@ import { FaCamera } from 'react-icons/fa';
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux';
+import { BsChevronDown } from 'react-icons/bs';
 
 const inter = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
@@ -112,7 +113,10 @@ const CreateUser = () => {
             <div className={`${image_styles.media}`}>
               <Dropdown
                 pick={
-                  prompt === "" ? <p>Pick a prompt...</p> : <p>
+                  prompt === "" ?
+                  <button className="flex items-center gap-8 h-9">
+                    <p>Pick a prompt...</p> <BsChevronDown />
+                  </button> : <p className="h-9">
                     {tags.filter( tag => tag.id === prompt)[0].name}
                   </p>
                 }

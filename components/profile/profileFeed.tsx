@@ -83,7 +83,7 @@ const ProfileFeed = () => {
               return (
                 <GalleryPhotos key={post} post_id={post}/>
               )
-            }) : <p>add some pictures !</p>
+            }) : <p>Add some pictures!</p>
         }
         </div>
       </div>
