@@ -46,7 +46,7 @@ const GalleryPhotos = ({post_id}: {post_id: string}) => {
   return (
     <div className={`${profile_styles.gallery_images}`}>
       {!loading && media &&
-        <Link href={ `/${post_id}` }> 
+        <Link href={ `/post/${post_id}` }> 
           <img src={resize(media.compressed_url, 'w_300')} alt={post.caption} />
         </Link>
       }
