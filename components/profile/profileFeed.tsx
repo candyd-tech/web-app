@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { FaCarAlt, FaMapMarkerAlt, FaMouse } from "react-icons/fa";
 
 import profile_styles from "@/styles/profile.module.scss"
+import { resize } from '../resize';
 
 const inter = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
@@ -46,7 +47,7 @@ const GalleryPhotos = ({post_id}: {post_id: string}) => {
     <div className={`${profile_styles.gallery_images}`}>
       {!loading && media &&
         <Link href={ `/${post_id}` }> 
-          <img src={media.compressed_url} alt={post.caption} />
+          <img src={resize(media.compressed_url, 'w_300')} alt={post.caption} />
         </Link>
       }
     </div>
@@ -65,7 +66,7 @@ const ProfileFeed = () => {
     >
       {/* Experiences */}
       <div className={`${profile_styles.experiences}`}>
-        <h3 className={`text-base font-extrabold`}>Experiences</h3>
+        <h3 className={`text-base font-extrabold hidden`}>Experiences</h3>
 
         <div>
           <FeedIcons icon={<FaMapMarkerAlt color={"white"} size={"1.5rem"}/>} />

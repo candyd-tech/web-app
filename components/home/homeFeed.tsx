@@ -4,6 +4,7 @@ import styles from "@/styles/feed.module.scss"
 import { useEffect, useState } from 'react'
 import InfiniteScroll from "react-infinite-scroll-component";
 import axios from 'axios'
+import { resize } from '../resize';
 
 const inter = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
@@ -19,11 +20,12 @@ const FeedButton = ({title, onclick}: {title: string, onclick: () => void}) => {
 }
 
 const FeedImages = ({post}: {post: any}) => {
+  const imgUrl = resize(post.media_url, 'w_200')
   return (
     <div className={`${styles.feed_images}`}>
       <div>
         <img
-          src={post.media_url}
+          src={imgUrl}
         />
       </div>
     </div>
