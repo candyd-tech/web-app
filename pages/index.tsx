@@ -6,7 +6,6 @@ import TopBar from '@/components/topBar'
 
 import { selectUid } from '@/components/redux/reducers/user'
 import { useSelector } from 'react-redux'
-import ComingSoon from '@/components/soon'
 
 const inter = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
@@ -21,12 +20,15 @@ const Home = () => {
       {
         uid !== '' &&
         <main
-          className={`min-h-screen ${inter.className}`}
+          className={`min-h-screen pb-12 ${inter.className}`}
         >
           <Nav />
           <TopBar  title={"Feed"}/>
-          { 1 === 1 ? <ComingSoon title={"Feed Feature: Coming Soon! "} content={"View and dedicate photos uploaded by individuals on various prompts, and even order them for physical redemption. Gain a categorized perspective on college memories, witnessing diverse experiences within shared spaces."} />
-            : <HomeFeed /> }
+          { 
+            // 1 === 1 ? <ComingSoon title={"Feed Feature: Coming Soon! "} content={"View and dedicate photos uploaded by individuals on various prompts, and even order them for physical redemption. Gain a categorized perspective on college memories, witnessing diverse experiences within shared spaces."} />
+            // : <HomeFeed />
+          }
+          <HomeFeed />
         </main>
       } 
     </>
