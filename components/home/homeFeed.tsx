@@ -86,7 +86,8 @@ const HomeFeed = () => {
           endMessage={<p></p>}
         >
           <div className={`${styles.feed_image_container}`}>
-            {Object.values(posts).map(post => <FeedImages key={post.id} post={post} />)}
+            { /* @ts-ignore */ }
+            {Object.values(posts).map(( post, index ) => <FeedImages key={post.id ?? index} post={post} />)}
           </div>
         </InfiniteScroll>
       </div>
