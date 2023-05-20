@@ -22,7 +22,7 @@ const OrderForm = ({uid, setCollections}:
     e.preventDefault();
 
     axios.post(`${process.env.NEXT_PUBLIC_DB_URL}/v1/order/new-collection`, {
-      name,
+      name: name !== "" ? name : "Collection",
       user_id,
       status: "waiting",
       type: typeOfCollection,
@@ -91,7 +91,7 @@ const OrderForm = ({uid, setCollections}:
                <input
                  type="radio"
                  className="text-sm"
-                 onChange={() => setTypeOfCollection("doodle")}
+                 onChange={() => setTypeOfCollection("polaroid")}
                  checked={typeOfCollection === "polaroid"} />
                <p className="text-sm"> Canvas [Price - 300] [1 Post] </p>
              </label>
@@ -120,7 +120,7 @@ const OrderForm = ({uid, setCollections}:
 
              <div onClick={() => setForMe(val => !val)} className="flex items-center gap-2">
                <div className={ `${forMe ? "bg-blue-600" : "bg-transparent"} w-[15px] h-[15px] border-black border-[1px] rounded-sm` }></div>
-               <p>Me Only</p>
+               <p>Myself</p>
              </div>
 
              <div onClick={() => setForSomeoneElse(val => !val)} className="flex items-center gap-2">
