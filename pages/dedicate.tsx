@@ -4,6 +4,7 @@ import TopBar from "@/components/topBar";
 import styles from "@/styles/dedicate.module.scss";
 import { FaSearch } from "react-icons/fa";
 import { Poppins } from 'next/font/google'
+import ComingSoon from "@/components/soon";
 
 const inter = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
@@ -26,6 +27,8 @@ const Dedicate = () => {
 
       <Nav />
       <TopBar title={"Dedicate Send"}/>
+      <ComingSoon title={""} content={""} />
+      {/*
       <div className={styles.content}>
         <div className={`${ styles.post_content }`}>
           <div>
@@ -53,7 +56,7 @@ const Dedicate = () => {
           </div>
         </div>
 
-      </div>
+      </div>*/}
     </div>
   )
 }

@@ -36,7 +36,7 @@ const CreateUser = () => {
   const mediaPost = () => {
     return axios.postForm(
       `${process.env.NEXT_PUBLIC_DB_URL}/v1/media/`, { image: selectedFile }
-    )
+    );
   }
 
   const postPost = (
@@ -53,6 +53,7 @@ const CreateUser = () => {
   ) => {
     setLoading(true)
     mediaPost().then(res => {
+      console.log("media posted")
       axios.post(`${process.env.NEXT_PUBLIC_DB_URL}/v1/post/`, {
         caption,
         user_id,
@@ -60,8 +61,8 @@ const CreateUser = () => {
         is_public,
         medias: [res.data.id],
       }).then(_res => {setLoading(false); console.log("*********POSTED***************"); router.push("/profile")})
-        .catch(err => console.error(err))
-      }).catch(err => console.error(err))
+        .catch(err => console.error(err, "post post failed"))
+      }).catch(err => console.error(err, "media post failed"))
   }
 
   const onChangeFile = (e: ChangeEvent<HTMLInputElement>) => {

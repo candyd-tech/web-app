@@ -1,0 +1,44 @@
+.order_create_container {
+  transition: width 500ms;
+}
+
+.create_order {
+  display: flex;
+  width: 100%;
+
+  transform: scaleY(0);
+  transform-origin: top;
+
+  transition: transform 150ms;
+
+  & > form {
+    padding: 1rem;
+
+    & > label {
+      display: flex;
+      flex-direction: column;
+
+      & > input {
+        border-bottom: 1px solid black;
+      }
+    }
+  }
+}
+
+.order_type {
+  & > label {
+    display: flex;
+    gap: 0.5rem;
+  }
+}
+
+.create_active {
+  transform: scaleY(1);
+  transform-origin: top;
+}
+
+.collections {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+}

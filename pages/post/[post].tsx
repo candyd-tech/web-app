@@ -6,11 +6,13 @@ import Nav from '@/components/nav';
 import TopBar from '@/components/topBar';
 import { Media, Tags, UserInfo } from '@/components/post/';
 
+import Modal from "react-modal";
 import styles from '@/styles/imageView.module.scss';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { selectUid } from '@/components/redux/reducers/user';
 import { FaEye, FaEyeSlash, FaLock } from 'react-icons/fa';
+import CollectionsModal from '@/components/order/collectionsModal';
 
 const inter = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
@@ -24,6 +26,8 @@ const ImageView = () => {
   const [media, setMedia] = useState("");
   const [tags, setTags] = useState<string[]>([]);
   const [isPublic, setIsPublic] = useState(true);
+
+  const [modalIsOpen, setModalIsOpen] = useState(false)
 
   const toggleVisibility = () => {
     axios.put(
@@ -78,8 +82,8 @@ const ImageView = () => {
               {truncateCaption(caption)}
             </p>
 
-            {/* @ts-ignore */}
-            <Tags tagsId={tags} />
+            {/* @ts-ignore 
+            <Tags tagsId={tags} />*/}
           </div>
         </div>
 
@@ -93,11 +97,19 @@ const ImageView = () => {
             </button> : <></>
           }
           <div>
-            <button disabled={true}>Order</button>
-            <button disabled={true}>Dedicate</button>
+            <button onClick={() => setModalIsOpen(true)}>Order</button>
+            <Modal
+              isOpen={modalIsOpen}
+              onRequestClose={() => setModalIsOpen(false)}
+              contentLabel='Place Order'
+              style={{content: {height: "50%"} }}
+            >
+              <h2 className={ `${inter.className} pb-8 text-lg font-semibold` }>Add Post to Collection: </h2>
+              {/* @ts-ignore */}
+              <CollectionsModal post_id={router.query.post} />
+            </Modal>
           </div>
         </div>
-
       </div>
     </main>
   )
