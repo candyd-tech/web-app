@@ -91,7 +91,7 @@ const Collection = () => {
           <p className="font-semibold">Ordered For: </p>
           {collection.else_name.map(( n: any ) => {
             return (
-              <p> - {n}</p>
+              <p key={n}> - {n}</p>
             )
           })}</div>}
         {

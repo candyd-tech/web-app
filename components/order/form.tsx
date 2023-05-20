@@ -146,7 +146,7 @@ const OrderForm = ({uid, setCollections}:
                  </div>
                </label>
                <ul className="pt-4"> {peopleName.map(n => {
-                 return <li> - {n}</li>
+                 return <li key={n}> - {n}</li>
                })}</ul>
              </div>}
            </div>
