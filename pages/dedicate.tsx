@@ -27,7 +27,7 @@ const Dedicate = () => {
 
       <Nav />
       <TopBar title={"Dedicate Send"}/>
-      <ComingSoon title={""} content={""} />
+      <ComingSoon title={"Dedications: Coming Soon! "} content={"Upload and dedicate memories to friends, or explore and dedicate memories from others on the feed to preserve cherished moments forever."} />
       {/*
       <div className={styles.content}>
         <div className={`${ styles.post_content }`}>
