@@ -10,6 +10,7 @@ import { Provider, useDispatch, useSelector } from 'react-redux'
 import store from '@/components/redux/store'
 import { auth } from "@/components/firebase"
 import { selectUser, setUser } from '@/components/redux/reducers/user'
+import { setToken } from '@/components/redux/reducers/id'
 
 export default function App({ Component, pageProps, router }: AppProps) {
 
@@ -28,10 +29,10 @@ const Main  = ({Component, pageProps}: AppProps) => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
+        user.getIdToken(true).then(token => dispatch(setToken(token)))
         axios.get(`${process.env.NEXT_PUBLIC_DB_URL}/v1/user/${user.uid}`)
           .then(resp => {
             const resp_data = resp.data;
-            // console.log("resp_data", resp_data)
 
             if (resp_data) {
               dispatch(setUser({

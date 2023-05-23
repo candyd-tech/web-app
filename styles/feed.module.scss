@@ -5,6 +5,8 @@
 .feed_buttons {
   display: flex;
   justify-content: space-between;
+  display: none;
+  padding-top: 2rem;
 }
 
 .feed_button {
@@ -45,12 +47,21 @@
   height: 220px;
   border-radius: 5px;
   border: 1px solid #5c95e3;
-  padding: 0.2rem;
+  // padding: 0.2rem;
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
 
   & > div {
     width: 100%;
     height: 100%;
-    background: red;
+    padding: 0.4rem;
+    padding-top: 0.5rem;
+    padding-bottom: 2rem;
+
+    & > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 2px;
+    }
   }
 }
