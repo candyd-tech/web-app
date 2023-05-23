@@ -19,7 +19,8 @@ export default function Auth() {
       <div className="p-5 flex flex-col h-full gap-10
         items-center justify-center bg-blue-100 bg-opacity-50 "
       >
-        <h1 className={`font-bold text-center`}>Join us now to relive the magic of your campus days by capturing and sharing your cherished memories through daily fun prompts, and stay tuned for upcoming features and exciting prizes!</h1>
+        <h1 className={`font-bold text-center`}>Click here to begin capturing your crazy experiences and store them in unique ways! 
+</h1>
         <button onClick={
           () => {
             signInWithGoogle(); router.push("/profile")
