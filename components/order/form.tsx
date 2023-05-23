@@ -84,7 +84,7 @@ const OrderForm = ({uid, setCollections}:
                  type="radio"
                  onChange={() => setTypeOfCollection("box_polaroid")}
                  checked={typeOfCollection === "box_polaroid"} />
-               <p className="text-sm"> Polaroid Frame [Price - 250] [9 Posts] </p>
+               <p className="text-sm"> 5 by 5” Polaroid Frame [Price - 400] [9 Posts] </p>
              </label>
 
              <label>
@@ -93,7 +93,7 @@ const OrderForm = ({uid, setCollections}:
                  className="text-sm"
                  onChange={() => setTypeOfCollection("polaroid")}
                  checked={typeOfCollection === "polaroid"} />
-               <p className="text-sm"> Canvas [Price - 200] [1 Post] </p>
+               <p className="text-sm"> 5 by 5” Canvas [Price - 350] [1 Post] </p>
              </label>
 
              <label>
@@ -102,7 +102,7 @@ const OrderForm = ({uid, setCollections}:
                  className="text-sm"
                  onChange={() => setTypeOfCollection("doodle")}
                  checked={typeOfCollection === "doodle"} />
-               <p className="text-sm"> Doodle Frame [Price - 450] [10 Posts] </p>
+               <p className="text-sm"> 5 by 5” Doodle Frame [Price - 650] [10 Posts] </p>
              </label>
 
              <label>
@@ -111,7 +111,7 @@ const OrderForm = ({uid, setCollections}:
                  className="text-sm"
                  onChange={() => setTypeOfCollection("book")}
                  checked={typeOfCollection === "book"} />
-               <p className="text-sm"> Memory Book [Price - 300] [20 Posts] </p>
+               <p className="text-sm"> 5 by 5” Memory Book [Price - 500] [20 Posts] </p>
              </label>
            </div>
 
