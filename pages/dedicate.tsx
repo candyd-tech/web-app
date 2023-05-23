@@ -9,7 +9,7 @@ const Dedicate = () => {
       <TopBar title={"Dedicate"}/>
       <ComingSoon
         title="Dedications: Coming Soon!"
-        content="View and dedicate photos uploaded by individuals on various prompts, and even order them for physical redemption. Gain a categorized perspective on college memories, witnessing diverse experiences within shared spaces." />
+        content="Want to share a funny picture with your friend? Add them here! Tag your friends and finish challenges together to win fun prizes and get more prompts!<br>Coming soon!" />
     </div>
   )
 }
